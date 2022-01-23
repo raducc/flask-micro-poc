@@ -1,0 +1,9 @@
+Flask~=2.0.2
+ipdb
+datetime
+Flask-SQLAlchemy
+PyJWT
+Werkzeug~=2.0.2
+pymysql
+cryptography
+Flask-Caching
