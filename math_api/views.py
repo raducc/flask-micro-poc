@@ -36,9 +36,9 @@ def fibonacci(current_user):
 
 
 @math_api_app.route("/factorial", methods=["GET"], strict_slashes=False)
-# @token_required
-# def factorial(current_user):
-def factorial():
+@token_required
+def factorial(current_user):
+    # def factorial():
     args = request.args
 
     try:

@@ -28,7 +28,7 @@ app.config.update(
 )
 app.config["SECRET_KEY"] = "cccsc"
 
-es = Elasticsearch([{"host": "localhost", "port": 9200}])
+es = Elasticsearch([{"host": "host.docker.internal", "port": 9200}])
 
 db.init_app(app)
 db.app = app
@@ -56,7 +56,7 @@ def before_request_signal():
         "args": {k: v for k, v in request.args.items()},
         "timestamp": datetime.now(),
     }
-    # es.index(index="requests", document=body)
+    es.index(index="requests", document=body)
 
 
 if __name__ == "__main__":
