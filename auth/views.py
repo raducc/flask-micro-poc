@@ -54,7 +54,7 @@ def login():
             },
             current_app.config["SECRET_KEY"],
         )
-        return jsonify({"token": token})
+        return jsonify({"header": "x-access-tokens", "token": token})
 
     return make_response(
         "could not verify", 401, {"WWW.Authentication": 'Basic realm: "login required"'}

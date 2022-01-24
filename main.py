@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Flask, request, jsonify
+from flask import Flask, request
 
 from auth.models import db
 from auth.utils import get_user_from_token

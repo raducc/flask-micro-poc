@@ -18,7 +18,7 @@ def power(current_user):
     except ValueError:
         return make_response("Invalid values for 'base' and 'exp' args", 400)
 
-    return f"{pow(base, exp)}"
+    return jsonify({"base": base, "exp": exp, "result": pow(base, exp)})
 
 
 @math_api_app.route("/fibonacci", methods=["GET"], strict_slashes=False)
@@ -32,13 +32,12 @@ def fibonacci(current_user):
     except ValueError:
         return make_response("Invalid value for 'n' arg", 400)
     fibo = get_fibonacci(n)
-    return f"{fibo}"
+    return jsonify({"n": n, "result": fibo})
 
 
 @math_api_app.route("/factorial", methods=["GET"], strict_slashes=False)
 @token_required
 def factorial(current_user):
-    # def factorial():
     args = request.args
 
     try:
@@ -52,7 +51,7 @@ def factorial(current_user):
         return make_response("Invalid value for 'n' arg", 400)
 
     fact = get_factorial(n)
-    return f"{fact}"
+    return jsonify({"n": n, "result": fact})
 
 
 @math_api_app.route("/site-map", methods=["GET"], strict_slashes=False)
